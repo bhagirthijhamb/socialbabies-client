@@ -1,4 +1,8 @@
-.card {
+.homePage {
+  padding: 40px 15px;
+}
+
+.babbleCard {
   background-color: #fff;
   padding: 8px;
   display: flex;
@@ -9,6 +13,20 @@
   margin-top: 15px;
 }
 
-.card-image {
-  width: 30%;
+.babbleCard-image {
+  width: 20%;
+  margin-right: 15px;
+
+  img {
+    border-radius: 50%;
+
+  }
+}
+
+.babbleCard-content {
+  padding: 5px;
+}
+
+.babbleCard-userHandle {
+    color: var(--primaryColor);
 }

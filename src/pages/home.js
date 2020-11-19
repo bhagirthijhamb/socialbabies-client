@@ -25,7 +25,7 @@ class home extends Component {
             this.state.babbles.map(babble => <Babble babble={babble} />)
         ) : <p>Loading...</p>
         return (
-            <div>
+            <div className="homePage">
                 {recentBabblesMarkup}
             </div>
         )

@@ -15,9 +15,9 @@ function App() {
     <div className="App">
       <Router>
         <div className="container">
-          <Grid container spacing={6}>
+          {/* <Grid container spacing={6}> */}
+          <Grid container>
             <Grid item sm={3} xs={12}>
-                <h2>Header</h2>
                 <Header />
             </Grid>
             <Grid item sm={6} xs={12}>

@@ -12,12 +12,12 @@ class Babble extends Component {
         const { babble: {body, createdAt, userImage, userHandle, babbleId, likeCount, commnentCount } } = this.props;
         console.log(userImage);
         return(
-            <div className="card">
-                <div className="card-image">
-                    <img src={userImage} alt="User image" className="card-userImage"/>
+            <div key={babbleId} className="babbleCard">
+                <div className="babbleCard-image">
+                    <img src={userImage} alt="User image" className="babbleCard-userImage"/>
                 </div>
-                <div className="card-content">
-                    <h3><Link to={`/users/${userHandle}`}>{userHandle} </Link></h3>
+                <div className="babbleCard-content">
+                    <h3 className="babbleCard-userHandle"><Link to={`/users/${userHandle}`}>{userHandle} </Link></h3>
                     <p>{body}</p>
                 </div>
             </div>

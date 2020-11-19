@@ -1,0 +1,39 @@
+header {
+    padding: 30px 15px 30px 20px;
+}
+
+.logo {
+    width: 50px;
+    margin: 30px auto;
+}
+
+.navBar-button {
+    width: 150px;
+    background-color: none;
+    border: none;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 10px 0 10px 15px;
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    .navBar-buttonIcon {
+        margin-right: 10px;
+    }
+
+    
+}
+
+.navBar-button:hover {
+    background-color: var(--primaryColor);
+}
+
+.babbleButton {
+        background-color: var(--primaryColor);
+        border: none;
+        padding: 10px 50px;
+        border-radius: 20px;
+    }
+
+

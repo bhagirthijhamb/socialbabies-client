@@ -27,28 +27,19 @@ body {
   max-width: 1200px;
 }
 
+h1, h2, h3 {
+  margin: 0;
+}
+
 li {
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-.card {
-  background-color: #fff;
-  padding: 8px;
-  display: flex;
-  width: 90%;
-  border: 2px solid lightgrey;
-  border-radius: 6px;
-  box-shadow: 3px 4px lightgrey;
-  margin-top: 15px;
-}
-
-.card-image {
-  width: 30%;
-}
 
 img {
   width: 100%;

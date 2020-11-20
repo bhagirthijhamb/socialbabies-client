@@ -6,6 +6,8 @@ import HomeSignupLoginNavigation from './../components/HomeSignupLoginNavigation
 import Logo from './../components/Logo'
 
 import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { Link } from 'react-router-dom';
 
 
 class login extends Component {
@@ -21,6 +23,27 @@ class login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.setState({
+            loading: true
+        })
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        axios.post('/users/login', userData)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+                    loading: false
+                });
+                this.props.history.push('/');
+            })
+            .catch(err => {
+                this.setState({
+                    errors: err.response.data,
+                    loading: false
+                })
+            })
     }
 
     handleChange = (e) => {
@@ -30,6 +53,7 @@ class login extends Component {
     }
 
     render() {
+        const { errors, loading } = this.state
         return (
             <div className="loginPage">
                 <Grid container>
@@ -46,11 +70,20 @@ class login extends Component {
                         <h2 className="login-heading">Login</h2>
                         
                         <form className="loginForm" noValidate onSubmit={this.handleSubmit}>
-                            <TextField id="email" name="email" type="email" label="Email" className="textField" value={this.state.email} onChange={this.handleChange} fullWidth />
-                            <TextField id="password" name="password" type="password" label="Password" className="textField" value={this.state.password} onChange={this.handleChange} fullWidth />
+                            <TextField id="email" name="email" type="email" label="Email" className="textField" helperText={errors.email} error={errors.email ? true : false} value={this.state.email} onChange={this.handleChange} fullWidth />
+                            <TextField id="password" name="password" type="password" label="Password" className="textField" helperText={errors.password} error={errors.password ? true : false} value={this.state.password} onChange={this.handleChange} fullWidth />
+
+                            {errors.general && <p className="customError">{errors.general}</p>}
+
+                            <button className="loginButton" type="submit" disabled={loading}> Log in 
+                            {/* {loading && (
+                                <CircularProgress className="progres" size={20} />
+                            )} */}
+                            </button><br/>
+
+                            <small>Dont have an account? Sign up <span className="linkToSignup"><Link to="/signup">here</Link></span></small>
                         </form>
 
-                        <button className="loginButton" type="submit"> Log in</button>
                     </Grid>
                 </Grid>
             </div>

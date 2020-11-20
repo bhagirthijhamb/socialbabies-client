@@ -9,8 +9,23 @@
 
 .loginButton {
     margin: 40px auto;
+    position: relative;
 }
 
 .textField {
     margin: 20px auto;
+}
+
+.customError {
+    color: red;
+}
+
+.linkToSignup {
+    color: var(--secondaryColor);
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.progress {
+    position: absolute;
 }

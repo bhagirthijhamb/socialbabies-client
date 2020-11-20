@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Header from './../components/Header';
 import Babble from './../components/Babble';
+import Aside from './../components/Aside';
+
 
 class home extends Component {
     state = {
@@ -22,11 +24,21 @@ class home extends Component {
     }
     render() {
         let recentBabblesMarkup = this.state.babbles ? (
-            this.state.babbles.map(babble => <Babble babble={babble} />)
+            this.state.babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
         ) : <p>Loading...</p>
         return (
             <div className="homePage">
-                {recentBabblesMarkup}
+                <Grid container>
+                    <Grid item sm={3} xs={12}>
+                        <Header />
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                        {recentBabblesMarkup}
+                    </Grid>
+                    <Grid item sm={3} xs={12}>
+                        <Aside />
+                    </Grid>
+                </Grid>
             </div>
         )
     }

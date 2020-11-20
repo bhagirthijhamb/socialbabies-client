@@ -7,9 +7,9 @@
   padding: 8px;
   display: flex;
   width: 90%;
-  border: 2px solid lightgrey;
+  border: 2px solid var(--secondaryColor);
   border-radius: 6px;
-  box-shadow: 3px 4px lightgrey;
+  box-shadow: 3px 4px var(--secondaryColor);
   margin-top: 15px;
 }
 
@@ -29,4 +29,16 @@
 
 .babbleCard-userHandle {
     color: var(--primaryColor);
+    // display: inline-block;
+}
+
+.babbleCard-content-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.babbleCard-timeFromNow {
+  color: var(--textColorDark);
+  margin-left: 30px;
 }

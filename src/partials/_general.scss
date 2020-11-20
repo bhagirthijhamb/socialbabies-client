@@ -12,6 +12,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 :root {
     --primaryColor: #ff97b5;
     --secondaryColor: #93d8f8;
+    --textColorDark: #333;
 }
 
 
@@ -44,3 +45,18 @@ a {
 img {
   width: 100%;
 }
+
+.homePage,
+.signupPage,
+.loginPage {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.babbleButton,
+.loginButton {
+        background-color: var(--primaryColor);
+        border: none;
+        padding: 10px 50px;
+        border-radius: 20px;
+    }

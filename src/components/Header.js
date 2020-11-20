@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
-import logo from './../assets/baby.png';
+import Logo from './../components/Logo'
+
 class Header extends Component {
     render() {
         return(
             <header>
-                <div className="logo">
-                    <img src={logo} alt="logo image" className="logo-image"/>
-                </div>
+                <Logo />
                 <Navbar />
             </header>
         )

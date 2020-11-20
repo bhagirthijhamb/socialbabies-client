@@ -2,6 +2,14 @@ header {
     padding: 30px 15px 30px 20px;
 }
 
+.headerNav {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo {
     width: 50px;
     margin: 30px auto;
@@ -36,4 +44,8 @@ header {
         border-radius: 20px;
     }
 
+.homeSignupLoginNavigation {
+    display: flex;
+    flex-direction: column;
+}
 

@@ -16,20 +16,20 @@ function App() {
       <Router>
         <div className="container">
           {/* <Grid container spacing={6}> */}
-          <Grid container>
-            <Grid item sm={3} xs={12}>
-                <Header />
-            </Grid>
-            <Grid item sm={6} xs={12}>
+          {/* <Grid container> */}
+            {/* <Grid item sm={3} xs={12}> */}
+                {/* <Header /> */}
+            {/* </Grid> */}
+            {/* <Grid item sm={6} xs={12}> */}
               <Route exact path='/' component={home} />
               <Route path='/signup' component={signup} />
               <Route path='/login' component={login} />
               
-            </Grid>
-            <Grid item sm={3} xs={12}>
-              <Aside />
-            </Grid>
-          </Grid>
+            {/* </Grid> */}
+            {/* <Grid item sm={3} xs={12}> */}
+              {/* <Aside /> */}
+            {/* </Grid> */}
+          {/* </Grid> */}
 
           <Switch>
             {/* <Route exact path='/' component={home} /> */}

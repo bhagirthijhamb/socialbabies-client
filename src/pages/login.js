@@ -33,6 +33,7 @@ class login extends Component {
         axios.post('/users/login', userData)
             .then(res => {
                 console.log(res.data);
+                localStorage.setItem('FBIdToken', 'Bearer ${res.data.token}');
                 this.setState({
                     loading: false
                 });
@@ -71,6 +72,7 @@ class login extends Component {
                         
                         <form className="loginForm" noValidate onSubmit={this.handleSubmit}>
                             <TextField id="email" name="email" type="email" label="Email" className="textField" helperText={errors.email} error={errors.email ? true : false} value={this.state.email} onChange={this.handleChange} fullWidth />
+
                             <TextField id="password" name="password" type="password" label="Password" className="textField" helperText={errors.password} error={errors.password ? true : false} value={this.state.password} onChange={this.handleChange} fullWidth />
 
                             {errors.general && <p className="customError">{errors.general}</p>}

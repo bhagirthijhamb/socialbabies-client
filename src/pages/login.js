@@ -17,7 +17,7 @@ class login extends Component {
             email: '',
             password: '',
             loading: false,
-            errors: []
+            errors: {}
         }
     }
 
@@ -33,7 +33,7 @@ class login extends Component {
         axios.post('/users/login', userData)
             .then(res => {
                 console.log(res.data);
-                localStorage.setItem('FBIdToken', 'Bearer ${res.data.token}');
+                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
                 this.setState({
                     loading: false
                 });

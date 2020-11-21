@@ -1,39 +1,39 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
-import Grid from '@material-ui/core/Grid';
+import jwtDecode from 'jwt-decode';
 
 // Pages
 import home from './pages/home';
 import signup from './pages/signup';
 import login from './pages/login';
-import Header from './components/Header'
-import Aside from './components/Aside';
+
+let authenticated;
+
+const token = localStorage.FBIdToken;
+console.log(token);
+
+if(token){
+  const decodedToken = jwtDecode(token);
+  console.log(decodedToken)
+  if(decodedToken.exp * 1000 < Date.now()){
+    window.location.href = '/login';
+    authenticated = false;
+  } else {
+    authenticated = true;
+  }
+}
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className="container">
-          {/* <Grid container spacing={6}> */}
-          {/* <Grid container> */}
-            {/* <Grid item sm={3} xs={12}> */}
-                {/* <Header /> */}
-            {/* </Grid> */}
-            {/* <Grid item sm={6} xs={12}> */}
+          <Switch>
               <Route exact path='/' component={home} />
               <Route path='/signup' component={signup} />
               <Route path='/login' component={login} />
-              
-            {/* </Grid> */}
-            {/* <Grid item sm={3} xs={12}> */}
-              {/* <Aside /> */}
-            {/* </Grid> */}
-          {/* </Grid> */}
-
-          <Switch>
-            {/* <Route exact path='/' component={home} /> */}
-        </Switch>
+          </Switch>
         </div>
       </Router>
     </div>

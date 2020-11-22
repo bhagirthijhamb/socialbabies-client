@@ -8,6 +8,9 @@ import home from './pages/home';
 import signup from './pages/signup';
 import login from './pages/login';
 
+// Components
+import Authroute from './utils/AuthRoute';
+
 let authenticated;
 
 const token = localStorage.FBIdToken;
@@ -31,8 +34,10 @@ function App() {
         <div className="container">
           <Switch>
               <Route exact path='/' component={home} />
-              <Route path='/signup' component={signup} />
-              <Route path='/login' component={login} />
+              <Authroute path='/signup' component={signup} authenticated={authenticated} />
+              <Authroute path='/login' component={login} authenticated={authenticated} />
+              {/* <Route path='/signup' component={signup} />
+              <Route path='/login' component={login} /> */}
           </Switch>
         </div>
       </Router>

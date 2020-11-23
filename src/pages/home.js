@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Header from './../components/Header';
 import Babble from './../components/Babble';
-import Aside from './../components/Aside';
+import Profile from './../components/Profile';
 
 
 class home extends Component {
@@ -36,7 +36,7 @@ class home extends Component {
                         {recentBabblesMarkup}
                     </Grid>
                     <Grid item sm={3} xs={12}>
-                        <Aside />
+                        <Profile />
                     </Grid>
                 </Grid>
             </div>

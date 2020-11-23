@@ -9,6 +9,9 @@ import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 
+// Redux stuff
+import { connect } from 'react-redux';
+import { loginUser } from './../redux/actions/userActions'
 
 class login extends Component {
     constructor(){
@@ -16,35 +19,42 @@ class login extends Component {
         this.state = {
             email: '',
             password: '',
-            loading: false,
+            // loading: false,
             errors: {}
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.ui.errors){
+            this.setState({ errors: nextProps.ui.errors });
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({
-            loading: true
-        })
+        // this.setState({
+        //     loading: true
+        // })
         const userData = {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('/users/login', userData)
-            .then(res => {
-                console.log(res.data);
-                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
-                this.setState({
-                    loading: false
-                });
-                this.props.history.push('/');
-            })
-            .catch(err => {
-                this.setState({
-                    errors: err.response.data,
-                    loading: false
-                })
-            })
+        // axios.post('/users/login', userData)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
+        //         this.setState({
+        //             loading: false
+        //         });
+        //         this.props.history.push('/');
+        //     })
+        //     .catch(err => {
+        //         this.setState({
+        //             errors: err.response.data,
+        //             loading: false
+        //         })
+        //     })
+        this.props.loginUser(userData, this.props.history);
     }
 
     handleChange = (e) => {
@@ -54,7 +64,9 @@ class login extends Component {
     }
 
     render() {
-        const { errors, loading } = this.state
+        const { ui: { loading }} = this.props;
+        // const { errors, loading } = this.state
+        const { errors } = this.state
         return (
             <div className="loginPage">
                 <Grid container>
@@ -94,7 +106,19 @@ class login extends Component {
 }
 
 login.prototypea = {
-
+    loginUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    ui: PropTypes.object.isRequired
 }
 
-export default login;
+const mapStateToProps = state => ({
+    user: state.user,
+    ui: state.ui
+})
+
+const mapActionsToProps = {
+    loginUser
+}
+
+// export default login;
+export default connect(mapStateToProps, mapActionsToProps)(login);

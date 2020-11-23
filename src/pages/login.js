@@ -24,9 +24,15 @@ class login extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.ui.errors){
-            this.setState({ errors: nextProps.ui.errors });
+    // componentWillReceiveProps(nextProps){
+    //     if(nextProps.ui.errors){
+    //         this.setState({ errors: nextProps.ui.errors });
+    //     }
+    // }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.ui.errors !== this.props.ui.errors){
+            this.setState({ errors: this.props.ui.errors });
         }
     }
 

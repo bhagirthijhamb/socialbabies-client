@@ -73,6 +73,9 @@ class login extends Component {
         const { ui: { loading }} = this.props;
         // const { errors, loading } = this.state
         const { errors } = this.state
+        
+        // Alternate to componentDidUpdate()
+        // const errors = !this.props.ui.errors ? {} : this.props.ui.errors;
         return (
             <div className="loginPage">
                 <Grid container>

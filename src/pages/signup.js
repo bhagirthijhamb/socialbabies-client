@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import HomeSignupLoginNavigation from './../components/HomeSignupLoginNavigation';
 import Logo from './../components/Logo'
@@ -8,6 +9,10 @@ import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 
+// Redux stuff
+import { connect } from 'react-redux';
+import { signupUser } from './../redux/actions/userActions';
+
 class signup extends Component {
     constructor(){
         super();
@@ -16,8 +21,14 @@ class signup extends Component {
             password: '',
             confirmPassword: '',
             handle: '',
-            loading: false,
+            // loading: false,
             errors: {}
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.ui.errors !== this.props.ui.errors){
+            this.setState({ errors: this.props.ui.errors });
         }
     }
 
@@ -40,26 +51,30 @@ class signup extends Component {
             handle: this.state.handle
         }
 
-        axios.post('/users/signup', newUserData)
-            .then(res => {
-                console.log(res.data);
-                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
-                this.setState({
-                    loading: false
-                })
-                this.props.history.push('/')
-            })
-            .catch(err => {
-                this.setState({
-                    errors: err.response.data,
-                    loading: false
-                })
-            })
+        // axios.post('/users/signup', newUserData)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
+        //         this.setState({
+        //             loading: false
+        //         })
+        //         this.props.history.push('/')
+        //     })
+        //     .catch(err => {
+        //         this.setState({
+        //             errors: err.response.data,
+        //             loading: false
+        //         })
+        //     })
+
+        this.props.signupUser(newUserData, this.props.history);
     }
 
 
     render() {
-        const { errors, loading } = this.state;
+        // const { errors, loading } = this.state;
+        const { errors } = this.state;
+        const { ui: { loading }} = this.props
         return (
             <div className="signupPage">
                 <Grid container>
@@ -77,7 +92,7 @@ class signup extends Component {
 
                             <TextField id="password" name="password" type="password" label="Password" className="textField" helperText={errors.password} error={errors.password ? true : false} value={this.state.password} onChange={this.handleChange} fullWidth />
 
-                            <TextField id="confirmPassword" name="confirmPassword" type="confirmPassword" label="Confirm password" className="textField" helperText={errors.confirmPassword} error={errors.confirmPassword ? true : false} value={this.state.confirmPassword} onChange={this.handleChange} fullWidth />
+                            <TextField id="confirmPassword" name="confirmPassword" type="password" label="Confirm password" className="textField" helperText={errors.confirmPassword} error={errors.confirmPassword ? true : false} value={this.state.confirmPassword} onChange={this.handleChange} fullWidth />
 
                             <TextField id="handle" name="handle" type="handle" label="User Handle" className="textField" helperText={errors.handle} error={errors.handle ? true : false} value={this.state.handle} onChange={this.handleChange} fullWidth />
 
@@ -99,4 +114,16 @@ class signup extends Component {
     }
 }
 
-export default signup;
+signup.propTypes = {
+    user: PropTypes.object.isRequired,
+    ui: PropTypes.object.isRequired,
+    signupUser: PropTypes.func.isRequired
+}
+
+
+const mapStateToProps = state => ({
+    user: state.user,
+    ui: state.ui
+})
+
+export default connect(mapStateToProps, { signupUser })(signup);

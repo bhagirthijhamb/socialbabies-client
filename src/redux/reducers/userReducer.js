@@ -1,4 +1,4 @@
-import {  SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER } from './../types';
+import {  SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_BABBLE, UNLIKE_BABBLE } from './../types';
 
 const initialState = {
     authenticated: false,
@@ -27,6 +27,24 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 loading: true
+            }
+        case LIKE_BABBLE:
+            return { 
+                ...state, 
+                likes: [
+                    ...state.likes, 
+                    { 
+                        userHandle: state.credentials.handle,
+                        babbleId: action.payload.babbleId
+                    }
+                ]
+            }
+        case UNLIKE_BABBLE:
+            return {
+                ...state,
+                likes: state.likes.filter(
+                    like => like.babbleId !== action.payload.babbleId
+                    )
             }
         default:
             return state;

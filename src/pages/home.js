@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-
+import PropTypes from 'prop-types';
 import Header from './../components/Header';
 import Babble from './../components/Babble';
 import Profile from './../components/Profile';
+import { connect } from 'react-redux';
+import { getBabbles } from './../redux/actions/dataActions';
 
 
 class home extends Component {
-    state = {
-            babbles: null
-        }
+    // state = {
+    //         babbles: null
+    //     }
 
     componentDidMount() {
-        axios.get('/babbles')
-            .then(res => {
-                console.log(res.data);
-                this.setState({
-                    babbles: res.data
-                })
-            })
-            .catch(err => console.log(err));
+        // axios.get('/babbles')
+        //     .then(res => {
+        //         console.log(res.data);
+        //         this.setState({
+        //             babbles: res.data
+        //         })
+        //     })
+        //     .catch(err => console.log(err));
+        this.props.getBabbles()
     }
     render() {
-        let recentBabblesMarkup = this.state.babbles ? (
-            this.state.babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
+        const { babbles, loading } = this.props.data;
+        // let recentBabblesMarkup = this.state.babbles ? (
+        //     this.state.babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
+        // ) : <p>Loading...</p>
+        let recentBabblesMarkup = !loading ? (
+            babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
         ) : <p>Loading...</p>
         return (
             <div className="homePage">
@@ -44,4 +51,13 @@ class home extends Component {
     }
 }
 
-export default home;
+home.propTypes = {
+    getBabbles: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    data: state.data
+})
+
+export default connect(mapStateToProps, { getBabbles })(home);

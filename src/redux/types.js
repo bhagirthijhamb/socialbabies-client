@@ -8,4 +8,10 @@ export const LOADING_USER = 'LOADING_USER';
 export const SET_ERRORS = 'SET_ERRORS';
 export const LOADING_UI = 'LOADING_UI';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const LOADING_DATA = 'LOADING_DATA';
 // Data reducer types
+export const SET_BABBLES = 'SET_BABBLES';
+export const SET_BABBLE = 'SET_BABBLE';
+export const LIKE_BABBLE = 'LIKE_BABBLE';
+export const UNLIKE_BABBLE = 'UNLIKE_BABBLE';
+export const DELETE_BABBLE = 'DELETE_BABBLE';

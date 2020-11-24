@@ -84,7 +84,7 @@ class Profile extends Component {
             </div>
         ) : (
             <div>
-                <p>No profile found, please login again</p>
+                <p>No profile found, <br /> please login again</p>
                 <div className="profileCard-buttons">
                     <Button component={Link} to="login">Log in</Button>
                     <Button component={Link} to="signup">Sign up</Button>

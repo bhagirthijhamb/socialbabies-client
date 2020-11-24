@@ -23,7 +23,7 @@ class Babble extends Component {
                         <h3 className="babbleCard-userHandle"><Link to={`/users/${userHandle}`}>{userHandle} </Link></h3>
                         <p className="babbleCard-timeFromNow">{dayjs(createdAt).fromNow()}</p>
                     </div>
-                    <p>{body}</p>
+                    <p className="babbleCard-body">{body}</p>
                 </div>
             </div>
         )

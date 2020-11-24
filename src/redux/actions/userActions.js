@@ -12,7 +12,7 @@ export const loginUser = (userData, history) => (dispatch) => {
             history.push('/');
         })
         .catch(err => {
-            console.log(err.response.data)
+            // console.log(err.response.data)
             dispatch({
                 type: SET_ERRORS,
                 payload: err.response.data
@@ -62,4 +62,13 @@ const setAuthorizationHeader = token => {
     const FBIdToken = `Bearer ${token}`;
     localStorage.setItem('FBIdToken', FBIdToken);
     axios.defaults.headers.common['Authorization'] = FBIdToken;
+}
+
+export const uploadImage = (formData) => (dispatch)=> {
+    dispatch({ type: LOADING_USER });
+    axios.post('/users/user/image', formData)
+        .then(res => {
+            dispatch(getUserData());
+        })
+        .catch(err => console.log(err));
 }

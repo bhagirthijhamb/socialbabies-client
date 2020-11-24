@@ -11,11 +11,13 @@ header {
 }
 
 .logo {
-    width: 50px;
+    width: 60px;
     margin: 30px auto;
 }
 
 .navBar-button {
+    font-size: 1.6rem;
+    font-weight: bold;
     width: 150px;
     background-color: none;
     border: none;
@@ -38,14 +40,19 @@ header {
 }
 
 .babbleButton {
-        background-color: var(--primaryColor);
-        border: none;
-        padding: 10px 50px;
-        border-radius: 20px;
-    }
+    font-size: 1.6rem;
+    background-color: var(--primaryColor);
+    border: none;
+    padding: 10px 50px;
+    border-radius: 20px;
+}
 
 .homeSignupLoginNavigation {
     display: flex;
     flex-direction: column;
+}
+
+.babbleCard-body{
+    font-size: 1.4rem;;
 }
 

@@ -11,11 +11,24 @@ import dayjs from 'dayjs'
 // MUI stuff
 import Button from '@material-ui/core/Button'; 
 
-
-
-// Red
+import MyButton from './../utils/MyButton';
+import { uploadImage, logoutUser } from './../redux/actions/userActions';
 
 class Profile extends Component {
+
+    handleImageChange = (e) => {
+        const image = e.target.files[0];
+        // send to server
+        const formData = new FormData();
+        formData.append('image', image, image.name);
+        this.props.uploadImage(formData);
+    }
+
+    handleEditPicture = () => {
+        const fileInput = document.getElementById('imageInput');
+        fileInput.click();
+    }
+
     render() {
         const { 
             user: { 
@@ -26,9 +39,13 @@ class Profile extends Component {
         } = this.props 
 
         let profileMarkup = !loading ? (authenticated ? (
-            <div classname="profileCard">
+            <div className="profileCard">
                 <div className="profileCard-image">
                     <img src={imageUrl} alt="profile image" />
+                    <input type="file" id="imageInput" hidden='hidden' onChange={this.handleImageChange} />
+                    <MyButton className="profileCard-image-editButton" tip='Edit profile picture' onClick={this.handleEditPicture} btnClassName='button'>
+                        <FontAwesomeIcon icon={faEdit} />
+                    </MyButton>
                 </div>
                 <hr/>
                 <div className="profileCard-details">
@@ -44,12 +61,12 @@ class Profile extends Component {
                     )}
                     {website && (
                         <Fragment>
-                            <spam><FontAwesomeIcon icon={faLink} />
+                            <span><FontAwesomeIcon icon={faLink} />
                                 <a href={website} target="_blank" rel="noopener noreferrer">
                                     {' '}{website}
                                 </a>
                                 <hr/>
-                            </spam>
+                            </span>
                         </Fragment>
                     )}
                     <p><FontAwesomeIcon icon={faCalendarAlt} /> Joined {dayjs(createdAt).format('MM YYYY')}</p>
@@ -57,7 +74,7 @@ class Profile extends Component {
             </div>
         ) : (
             <div>
-                <p>no profile found, lease login again</p>
+                <p>No profile found, please login again</p>
                 <div className="profileCard-buttons">
                     <Button component={Link} to="login">Log in</Button>
                     <Button component={Link} to="signup">Sign up</Button>
@@ -77,8 +94,12 @@ const mapStateToProps = state => ({
     user: state.user
 })
 
+const mapActionsToProps = { uploadImage, logoutUser };
+
 
 Profile.propTypes = {
     user: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    uploadImage: PropTypes.func.isRequired
 }
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapActionsToProps)(Profile);

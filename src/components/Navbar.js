@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HomeSignupLoginNavigation from './../components/HomeSignupLoginNavigation';
 // implementing Treeshaking, importing just that component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBell, faUserAlt } from '@fortawesome/free-solid-svg-icons';
@@ -14,11 +13,7 @@ class Navbar extends Component {
                     <li><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faBell} /></span> Notifications</button></li>
                     <li><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faUserAlt} /></span> Profile</button></li>
                     <li><button className="babbleButton"> Babble</button></li>
-                </div>
-                <div className="secondaryNav">
-                    <HomeSignupLoginNavigation />
-                </div>
-                
+                </div>      
             </nav>
         )
     }

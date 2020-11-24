@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faEdit, faTrashAlt, faLink, faCalendarAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faEdit, faEllipsisH, faTrashAlt, faLink, faCalendarAlt  } from '@fortawesome/free-solid-svg-icons';
 // dayjs
 import dayjs from 'dayjs'
 // MUI stuff
-import Button from '@material-ui/core/Button'; 
-
+import Button from '@material-ui/core/Button';
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn'; 
 import MyButton from './../utils/MyButton';
 import { uploadImage, logoutUser } from './../redux/actions/userActions';
+import EditDetails from './../components/EditDetails'
 
 class Profile extends Component {
 
@@ -23,12 +24,13 @@ class Profile extends Component {
         formData.append('image', image, image.name);
         this.props.uploadImage(formData);
     }
-
     handleEditPicture = () => {
         const fileInput = document.getElementById('imageInput');
         fileInput.click();
     }
-
+    handleLogout = () => {
+        this.props.logoutUser();
+    }
     render() {
         const { 
             user: { 
@@ -44,7 +46,7 @@ class Profile extends Component {
                     <img src={imageUrl} alt="profile image" />
                     <input type="file" id="imageInput" hidden='hidden' onChange={this.handleImageChange} />
                     <MyButton className="profileCard-image-editButton" tip='Edit profile picture' onClick={this.handleEditPicture} btnClassName='button'>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FontAwesomeIcon icon={faEllipsisH} />
                     </MyButton>
                 </div>
                 <hr/>
@@ -69,8 +71,16 @@ class Profile extends Component {
                             </span>
                         </Fragment>
                     )}
-                    <p><FontAwesomeIcon icon={faCalendarAlt} /> Joined {dayjs(createdAt).format('MM YYYY')}</p>
+                    <p><FontAwesomeIcon icon={faCalendarAlt} /> Joined {dayjs(createdAt).format('MMM YYYY')}</p>
                 </div>
+                <div className="edit-logout">
+                    <EditDetails />
+
+                    <MyButton tip='Logout' onClick={this.handleLogout} btnClassName="logout-btn">
+                        <KeyboardReturn color='primary'/>Logout
+                    </MyButton>
+                </div>
+                
             </div>
         ) : (
             <div>

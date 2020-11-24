@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import HomeSignupLoginNavigation from './../components/HomeSignupLoginNavigation';
 import Logo from './../components/Logo'
 
 import TextField from '@material-ui/core/TextField';
@@ -83,10 +82,6 @@ class login extends Component {
                         <Logo />
                         <p className="login-paragraph">See what's happening in the world right now.</p>
                         <p className="login-paragraph">Join Babbler today</p>
-
-                        <div className="secondaryNav">
-                            <HomeSignupLoginNavigation />
-                        </div>
                     </Grid>
                     <Grid item sm={6} xs={12}>
                         <h2 className="login-heading">Login</h2>

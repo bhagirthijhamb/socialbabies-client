@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import HomeSignupLoginNavigation from './../components/HomeSignupLoginNavigation';
 import Logo from './../components/Logo'
 import axios from 'axios';
 
@@ -80,9 +79,6 @@ class signup extends Component {
                 <Grid container>
                     <Grid item sm={6} xs={12}>
                         <Logo />
-                        <div className="secondaryNav">
-                            <HomeSignupLoginNavigation />
-                        </div>
                     </Grid>
                     <Grid item sm={6} xs={12}>
                         <h2 className="login-heading">Sign up</h2>

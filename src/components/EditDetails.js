@@ -69,7 +69,7 @@ class EditDetails extends Component {
         return (
             <Fragment>
                 <MyButton tip='Edit Details' onClick={this.handleOpen} btnClassName="editDetails-button">
-                    <FontAwesomeIcon icon={faEdit} />Edit
+                    <FontAwesomeIcon icon={faEdit} /><span className="editBtn">Edit</span>
                 </MyButton>
                 <Dialog
                     open={this.state.open}

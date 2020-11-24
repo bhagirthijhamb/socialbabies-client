@@ -64,3 +64,19 @@ img {
         padding: 10px 50px;
         border-radius: 20px;
     }
+
+.appBar {
+  background-color: var(--primaryColor);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  display: block;
+  text-align: center;
+}
+
+
+
+.MuiAppBar-color {
+    color: inherit;
+    background-color: pink;
+}

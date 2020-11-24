@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faEdit, faEllipsisH, faTrashAlt, faLink, faCalendarAlt  } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faEllipsisH, faTrashAlt, faLink, faCalendarAlt  } from '@fortawesome/free-solid-svg-icons';
 // dayjs
 import dayjs from 'dayjs'
 // MUI stuff
@@ -77,7 +77,7 @@ class Profile extends Component {
                     <EditDetails />
 
                     <MyButton tip='Logout' onClick={this.handleLogout} btnClassName="logout-btn">
-                        <KeyboardReturn color='primary'/>Logout
+                        <KeyboardReturn color='primary'/><span className="logoutBtn">Logout</span>
                     </MyButton>
                 </div>
                 

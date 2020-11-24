@@ -67,11 +67,15 @@
 }
 
 .editDetails-button{
-    color: var(--primaryColor);
     float: left
 }
 .logout-btn {
-    color: var(--primaryColor);
     float: right;
+}
+
+.edit-logout svg,
+.logoutBtn,
+.editBtn {
+    color: var(--primaryColor);
 }
 

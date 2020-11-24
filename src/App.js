@@ -9,6 +9,7 @@ import signup from './pages/signup';
 import login from './pages/login';
 // Components
 import Authroute from './utils/AuthRoute';
+import TopNavbar from './components/TopNavbar'
 // Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -39,6 +40,7 @@ function App() {
   return (
     <Provider store={store}>
         <Router>
+          <TopNavbar />
           <div className="container">
             <Switch>
                 <Route exact path='/' component={home} />

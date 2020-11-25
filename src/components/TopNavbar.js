@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MyButton from './../utils/MyButton';
-// import PostScream from '../scream/PostScream';
+import PostBabble from './PostBabble';
 // import Notifications from './Notifications';
 
 // MUI stuff
@@ -28,10 +28,10 @@ class TopNavbar extends Component {
             //     <Toolbar className='nav-container'> */}
                     {authenticated ? (
                         <Fragment>
-                            <MyButton tip='Post a Scream!'>
+                            {/* <MyButton tip='Post a Scream!'>
                                 <AddIcon /> Babble
-                            </MyButton>
-                            {/* <PostScream/> */}
+                            </MyButton> */}
+                            <PostBabble/>
                             <Link to='/'>
                                 <MyButton tip='Home'>
                                     <FontAwesomeIcon icon={faHome} /> Home

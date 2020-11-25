@@ -18,6 +18,25 @@ export const getBabbles = () => dispatch => {
             })
         })
 }
+// Post a babble
+export const postBabble = newBabble => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios.post('/babbles/babble', newBabble)
+        .then(res => {
+            console.log(newBabble);
+            console.log(res.data)
+            dispatch({ type: POST_BABBLE, payload: res.data});
+            dispatch({ type: CLEAR_ERRORS })
+        })
+        .catch(err => {
+            console.log(err.response)
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            });
+        })
+}
+
 // Like a babble
 export const likeBabble = babbleId => dispatch => {
     axios.get(`/babbles/${babbleId}/like`)

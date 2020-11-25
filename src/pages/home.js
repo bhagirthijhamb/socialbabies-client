@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import Header from './../components/Header';
 import Babble from './../components/Babble';
@@ -32,7 +31,7 @@ class home extends Component {
         // ) : <p>Loading...</p>
         let recentBabblesMarkup = !loading ? (
             babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
-        ) : <p>Loading...</p>
+        ) : (<p>Loading...</p>)
         return (
             <div className="homePage">
                 <Grid container>

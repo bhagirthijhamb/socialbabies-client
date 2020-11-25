@@ -32,6 +32,14 @@ export default function(state = initialState, action){
             index = state.babbles.findIndex(babble => babble.babbleId === action.payload);
             state.babbles.splice(index, 1);
             return { ...state }
+        case POST_BABBLE:
+            return {
+                ...state,
+                babbles: [
+                    action.payload,
+                    ...state.babbles
+                ]
+            }
         default:
             return state
     }

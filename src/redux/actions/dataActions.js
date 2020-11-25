@@ -21,7 +21,7 @@ export const getBabbles = () => dispatch => {
 // Get babble
 export const getBabble = (babbleId) => dispatch => {
     dispatch({ type: LOADING_UI });
-    axios.get(`/babble/${babbleId}`)
+    axios.get(`/babbles/${babbleId}`)
         .then(res => {
             dispatch({
                 type: SET_BABBLE,

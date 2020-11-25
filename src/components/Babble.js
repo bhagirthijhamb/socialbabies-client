@@ -82,8 +82,8 @@ class Babble extends Component {
                     <div className="likes-comments">
                         {likeButton}<span>{likeCount} Likes</span>
                         <MyButton tip="comments" ><FontAwesomeIcon icon={faComments} className="commentsIcon"/></MyButton><span>{commentCount} Comments</span>
+                        <BabbleDialog babbleId={babbleId} userHandle={userHandle} />
                     </div>
-                    {/* <BabbleDialog babbleId={babbleId} userHandle={userHandle} /> */}
                 </div>
             </div>
         )

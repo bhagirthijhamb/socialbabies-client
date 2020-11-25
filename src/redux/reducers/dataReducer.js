@@ -17,10 +17,11 @@ export default function(state = initialState, action){
             return {
                 ...state, babbles: action.payload, loading: false
             }
-        // case SET_BABBLE:
-        //     return {
-
-        //     }
+        case SET_BABBLE:
+            return {
+                ...state,
+                babble: action.payload
+            }
         case LIKE_BABBLE:
         case UNLIKE_BABBLE:
             index = state.babbles.findIndex(babble => babble.babbleId === action.payload.babbleId);

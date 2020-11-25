@@ -119,3 +119,19 @@
   left: 90%;
   top: 6%;
 }
+
+.invisibleSeparator {
+  border: none;
+  margin: 4px;
+}
+
+.babbleDialogContent{
+  padding: 20px;
+}
+
+.profileImage {
+  max-width: 200;
+  height: 200;
+  border-radius: 50%;
+  object-fit: cover;;
+}

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
 import MyButton from './../utils/MyButton';
 import dayjs from 'dayjs';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Redux stuff
 import { connect } from 'react-redux';
 import { getBabble } from './../redux/actions/dataActions';
@@ -43,12 +43,15 @@ class BabbleDialog extends Component{
             <CircularProgress size={200}/>
         ):(
             <Grid container spacing={16}>
-                <Grid item sm={5}>
-                    <img src={userImage} alt="Profile" className="profileImage" /> 
+                <Grid item sm={4}>
+                    <img src={userImage} alt="Profile picture" className="profileImage" /> 
                 </Grid>
-                <Grid item sm={7}>
-                    <h3>@{userHandle}</h3>
-                    <hr/>
+                <Grid item sm={8} className="babbleDialogContent">
+                    <h3><Link to={`/users/${userHandle}`}>@{userHandle} </Link></h3>
+                    <hr className="invisibleSeparator" />
+                    <p className="babbleDetailsCard-timeFromNow">{dayjs(createdAt).fromNow(`h:mm a, MMMM DD YYYY`)}</p>
+                    <hr className="invisibleSeparator" />
+                    <p className="babbleDetailsCard-body">{body}</p>
                 </Grid>
             </Grid>
         )

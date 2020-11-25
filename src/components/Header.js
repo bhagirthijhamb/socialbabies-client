@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
+import Navbar from './../components/layout/Navbar';
 import Logo from './../components/Logo'
 
 class Header extends Component {

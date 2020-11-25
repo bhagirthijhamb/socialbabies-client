@@ -11,9 +11,9 @@ import dayjs from 'dayjs'
 // MUI stuff
 import Button from '@material-ui/core/Button';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn'; 
-import MyButton from './../utils/MyButton';
-import { uploadImage, logoutUser } from './../redux/actions/userActions';
-import EditDetails from './../components/EditDetails'
+import MyButton from '../../utils/MyButton';
+import { uploadImage, logoutUser } from '../../redux/actions/userActions';
+import EditDetails from './EditDetails'
 
 class Profile extends Component {
 

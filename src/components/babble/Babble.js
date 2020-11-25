@@ -14,7 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComments  } from '@fortawesome/free-solid-svg-icons';
 //
-import MyButton from './../utils/MyButton';
+import MyButton from './../../utils/MyButton';
 import DeleteBabble from './DeleteBabble';
 import BabbleDialog from './BabbleDialog';
 import LikeButton from './LikeButton';

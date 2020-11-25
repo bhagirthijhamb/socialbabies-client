@@ -17,3 +17,4 @@ export const LIKE_BABBLE = 'LIKE_BABBLE';
 export const UNLIKE_BABBLE = 'UNLIKE_BABBLE';
 export const DELETE_BABBLE = 'DELETE_BABBLE';
 export const POST_BABBLE = 'POST_BABBLE';
+export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';

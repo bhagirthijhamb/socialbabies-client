@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import MyButton from './../utils/MyButton';
+import MyButton from '../../utils/MyButton';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Icons
@@ -11,7 +11,7 @@ import { faHeart, faComments  } from '@fortawesome/free-solid-svg-icons';
 // Redux
 import { connect } from 'react-redux';
 // 
-import { likeBabble, unlikeBabble } from './../redux/actions/dataActions'
+import { likeBabble, unlikeBabble } from './../../redux/actions/dataActions'
 
 
 class LikeButton extends Component{

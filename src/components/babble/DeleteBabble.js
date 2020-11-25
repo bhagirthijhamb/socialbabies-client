@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import MyButton from './../utils/MyButton';
+import MyButton from '../../utils/MyButton';
 
 // MUI stuff
 import Button from '@material-ui/core/Button';
@@ -10,7 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DeleteOutline from '@material-ui/icons/DeleteOutlined';
 
 import {connect} from 'react-redux';
-import { deleteBabble } from './../redux/actions/dataActions';    
+import { deleteBabble } from './../../redux/actions/dataActions';    
 
 
 class DeleteBabble extends Component {

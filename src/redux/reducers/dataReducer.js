@@ -44,6 +44,14 @@ export default function(state = initialState, action){
                     ...state.babbles
                 ]
             }
+        case SUBMIT_COMMENT:
+            return {
+                ...state,
+                babble: {
+                    ...state.babble,
+                    comments: [action.payload, ...state.babble.comments]
+                }
+            }
         default:
             return state
     }

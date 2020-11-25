@@ -167,3 +167,14 @@
     font-size: 1.4rem;
     text-align: left;
 }
+
+// comments
+.commentImage {
+  max-width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.commentData {
+  margin-left: 20px;
+}

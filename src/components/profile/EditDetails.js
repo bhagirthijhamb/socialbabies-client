@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
-import MyButton from './../utils/MyButton';
+import MyButton from '../../utils/MyButton';
 // Redux stuff
 import { connect } from 'react-redux';
-import { editUserDetails } from './../redux/actions/userActions';
+import { editUserDetails } from './../../redux/actions/userActions';
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';

@@ -39,7 +39,7 @@ export const postBabble = newBabble => dispatch => {
             console.log(newBabble);
             console.log(res.data)
             dispatch({ type: POST_BABBLE, payload: res.data});
-            dispatch({ type: CLEAR_ERRORS })
+            dispatch(clearErrors())
         })
         .catch(err => {
             console.log(err.response)
@@ -72,6 +72,23 @@ export const unlikeBabble = babbleId => dispatch => {
         })
         .catch(err => console.log(err))
 }
+// Submit a commnt
+export const submitComment = (babbleId, commentData) => dispatch => {
+    axios.post(`/babbles/${babbleId}/comment`, commentData)
+        .then(res => {
+            dispatch({
+                type: SUBMIT_COMMENT,
+                payload: res.data
+            })
+            dispatch(clearErrors())
+        })
+        .catch(err => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            })
+        })
+}
 
 export const deleteBabble = babbleId => dispatch => {
     axios.delete(`/babbles/${babbleId}`)
@@ -82,5 +99,6 @@ export const deleteBabble = babbleId => dispatch => {
 }
 
 export const clearErrors = () => dispatch => {
+        console.log('from clear errors , babble dialog close')
     dispatch({ type: CLEAR_ERRORS })
 }

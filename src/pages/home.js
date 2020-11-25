@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Header from './../components/Header';
-import Babble from './../components/Babble';
-import Profile from './../components/Profile';
+import Babble from './../components/babble/Babble';
+import Profile from './../components/profile/Profile';
 import { connect } from 'react-redux';
 import { getBabbles } from './../redux/actions/dataActions';
 

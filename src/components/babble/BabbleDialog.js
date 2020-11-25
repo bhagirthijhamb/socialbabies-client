@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
-import MyButton from './../utils/MyButton';
+import MyButton from '../../utils/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 // Redux stuff
 import { connect } from 'react-redux';
-import { getBabble } from './../redux/actions/dataActions';
+import { getBabble, clearErrors } from './../../redux/actions/dataActions';
 // import { clearErrors } from './../redux/actions/dataActions';
 
 // Fontawesome
@@ -24,6 +24,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 //
 import LikeButton from './LikeButton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 
 class BabbleDialog extends Component{
@@ -31,17 +33,21 @@ class BabbleDialog extends Component{
         open: false
     }
     handleOpen = () => {
+        console.log('handleOpen')
         this.setState({ open: true });
         this.props.getBabble(this.props.babbleId);
     }
     handleClose = () => {
+        console.log('babble dialog close')
         this.setState({ open: false })
+        this.props.clearErrors();
     }
     render(){
         const { 
-            babble: { babbleId, body, createdAt, likeCount, commentCount, userImage, userHandle }, 
+            babble: { babbleId, body, createdAt, likeCount, commentCount, userImage, userHandle, comments }, 
             ui: { loading }
         } = this.props 
+
         const dialogMarkup = loading ? (
             <div className="spinnerDiv">
                 <CircularProgress size={200} thickness={2} color="secondary" />
@@ -62,12 +68,15 @@ class BabbleDialog extends Component{
                         <MyButton tip="comments" ><FontAwesomeIcon icon={faComments} className="commentsIcon"/></MyButton><span>{commentCount} Comments</span>
                     </div>
                 </Grid>
+                <hr/>
+                <CommentForm babbleId={babbleId} />
+                <Comments comments={comments}/>
             </Grid>
         )
         return (
             <Fragment>
                 <div className="expandButton">
-                    <MyButton onClick={this.handleOpen} tip="Expand screen">
+                    <MyButton onClick={this.handleOpen} tip="Expand babble">
                         <UnfoldMore />
                     </MyButton>
                 </div>
@@ -87,7 +96,8 @@ class BabbleDialog extends Component{
 }
 
 BabbleDialog.propTypes = {
-    getBabbles: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+    getBabble: PropTypes.func.isRequired,
     babbleId: PropTypes.string.isRequired,
     userHandle: PropTypes.string.isRequired,
     babble: PropTypes.object.isRequired,
@@ -100,7 +110,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionToProps = {
-    getBabble
+    getBabble, clearErrors
 }
 
 export default connect(mapStateToProps, mapActionToProps)(BabbleDialog);

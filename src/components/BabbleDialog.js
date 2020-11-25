@@ -10,7 +10,7 @@ import { getBabble } from './../redux/actions/dataActions';
 
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faComments } from '@fortawesome/free-solid-svg-icons';
 // MUI stuff
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -22,6 +22,9 @@ import Grid from '@material-ui/core/Grid';
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
+//
+import LikeButton from './LikeButton';
+
 
 class BabbleDialog extends Component{
     state = {
@@ -40,7 +43,9 @@ class BabbleDialog extends Component{
             ui: { loading }
         } = this.props 
         const dialogMarkup = loading ? (
-            <CircularProgress size={200}/>
+            <div className="spinnerDiv">
+                <CircularProgress size={200} thickness={2} color="secondary" />
+            </div>
         ):(
             <Grid container spacing={16}>
                 <Grid item sm={4}>
@@ -52,14 +57,20 @@ class BabbleDialog extends Component{
                     <p className="babbleDetailsCard-timeFromNow">{dayjs(createdAt).fromNow(`h:mm a, MMMM DD YYYY`)}</p>
                     <hr className="invisibleSeparator" />
                     <p className="babbleDetailsCard-body">{body}</p>
+                    <div className="likes-comments">
+                        <LikeButton babbleId={babbleId} /><span>{likeCount} Likes</span>
+                        <MyButton tip="comments" ><FontAwesomeIcon icon={faComments} className="commentsIcon"/></MyButton><span>{commentCount} Comments</span>
+                    </div>
                 </Grid>
             </Grid>
         )
         return (
             <Fragment>
-                <MyButton onClick={this.handleOpen} tip="Expand screen">
-                    <UnfoldMore />
-                </MyButton>
+                <div className="expandButton">
+                    <MyButton onClick={this.handleOpen} tip="Expand screen">
+                        <UnfoldMore />
+                    </MyButton>
+                </div>
                 <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth='sm' className="postBabbleDialogBox" >
                     <div className="closePostBabbleBtn">
                         <MyButton tip="Close" onClick={this.handleClose} tipClassName="closeBabblePostButton" >

@@ -26,6 +26,9 @@ export default function(state = initialState, action){
         case UNLIKE_BABBLE:
             index = state.babbles.findIndex(babble => babble.babbleId === action.payload.babbleId);
             state.babbles[index] = action.payload;
+            if(state.babble.babbleId === action.payload.babbleId){
+                state.babble = action.payload
+            }
             return {
                 ...state
             }

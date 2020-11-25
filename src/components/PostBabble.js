@@ -4,7 +4,7 @@ import MyButton from './../utils/MyButton';
 // Redux stuff
 import { connect } from 'react-redux';
 import { postBabble } from './../redux/actions/dataActions';
-import { getBabbles } from './../redux/actions/dataActions';
+import { clearErrors } from './../redux/actions/dataActions';
 
 // Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,8 +33,8 @@ class PostBabble extends Component {
         }
         if(prevProps !== this.props){            
             if(!this.props.ui.errors && !this.props.ui.loading){
-                this.setState({ body: '' });
-                this.handleClose();
+                this.setState({ body: '', open: false, errors: {} });
+                // this.handleClose(); // because it sets infinite loop
             }
         }
     }
@@ -70,6 +70,7 @@ class PostBabble extends Component {
         this.setState({ open: true })
     }
     handleClose = () => {
+        this.props.clearErrors();
         this.setState({ open: false, errors: {} })
     }
     handleChange = e => {
@@ -88,15 +89,17 @@ class PostBabble extends Component {
                 <MyButton onClick={this.handleOpen} tip="Post a babble!">
                     <AddIcon  />
                 </MyButton>
-                <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth='sm' >
-                    <MyButton tip="Close" onClick={this.handleClose} tipClassName="closeButton">
-                        <CloseIcon />
-                    </MyButton>
+                <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth='sm' className="postBabbleDialogBox" >
+                    <div className="closePostBabbleBtn">
+                        <MyButton tip="Close" onClick={this.handleClose} tipClassName="closeBabblePostButton" >
+                            <CloseIcon />
+                        </MyButton>
+                    </div>
                     <DialogTitle>Post a new babble</DialogTitle>
                     <DialogContent>
                         <form onSubmit={this.handleSubmit}>
                             <TextField name="body" type="text" label="Babble..." multiline rows="3" placeholder="Babble with your friends..." error={errors.body ? true : false} helperText={errors.body} error={errors.body ? true : false} value={this.state.body} className="textField" onChange={this.handleChange} fullWidth />
-                            <Button type="submit" variant="contained" color="primary" className="submitButton" disabled={loading}>Submit
+                            <Button type="submit" variant="contained" color="primary" className="babbleSubmitButton" disabled={loading}>Submit
                                 {loading && (
                                     <CircularProgress size={30} className="progressSpinner" />
                                 )}
@@ -111,7 +114,7 @@ class PostBabble extends Component {
 
 PostBabble.propTypes = {
     postBabble: PropTypes.func.isRequired,
-    getBabbles: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     ui: PropTypes.object.isRequired
 }
 
@@ -120,7 +123,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = ({
-    postBabble, getBabbles
+    postBabble, clearErrors
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(PostBabble)

@@ -18,6 +18,19 @@ export const getBabbles = () => dispatch => {
             })
         })
 }
+// Get babble
+export const getBabble = (babbleId) => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios.get(`/babble/${babbleId}`)
+        .then(res => {
+            dispatch({
+                type: SET_BABBLE,
+                payload: res.data
+            })
+            dispatch({ type: STOP_LOADING_UI })
+        })
+        .catch(err => console.log(err))
+} 
 // Post a babble
 export const postBabble = newBabble => dispatch => {
     dispatch({ type: LOADING_UI });
@@ -66,4 +79,8 @@ export const deleteBabble = babbleId => dispatch => {
             dispatch({ type: DELETE_BABBLE, payload: babbleId })
         })
         .catch(err => console.log(err))
+}
+
+export const clearErrors = () => dispatch => {
+    dispatch({ type: CLEAR_ERRORS })
 }

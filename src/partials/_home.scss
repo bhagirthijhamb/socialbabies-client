@@ -88,7 +88,7 @@
 }
 
 .submitButton {
-  position: realtive;
+  position: relative;
 }
 
 .progressSpinner {
@@ -99,4 +99,23 @@
   position: absolute;
   left: 90%;
   top: 10%;
+}
+
+.babbleSubmitButton{
+  position: relative;
+  float: right;
+  // margin-top: 1rem;
+}
+
+// .postBabbleClose{
+//   // width: 50px;
+//   position: absolute;
+//   // top: 10px;
+//   // right: 10px;
+// }
+
+.closePostBabbleBtn {
+  position: absolute;
+  left: 90%;
+  top: 6%;
 }

@@ -19,6 +19,7 @@ import { faHeart, faComments  } from '@fortawesome/free-solid-svg-icons';
 //
 import MyButton from './../utils/MyButton';
 import DeleteBabble from './DeleteBabble';
+import BabbleDialog from './BabbleDialog';
 import { likeBabble, unlikeBabble } from './../redux/actions/dataActions'
 
 class Babble extends Component {
@@ -82,7 +83,7 @@ class Babble extends Component {
                         {likeButton}<span>{likeCount} Likes</span>
                         <MyButton tip="comments" ><FontAwesomeIcon icon={faComments} className="commentsIcon"/></MyButton><span>{commentCount} Comments</span>
                     </div>
-                        
+                    {/* <BabbleDialog babbleId={babbleId} userHandle={userHandle} /> */}
                 </div>
             </div>
         )

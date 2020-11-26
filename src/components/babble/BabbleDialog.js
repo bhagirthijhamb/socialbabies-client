@@ -52,7 +52,8 @@ class BabbleDialog extends Component{
             <div className="spinnerDiv">
                 <CircularProgress size={200} thickness={2} color="secondary" />
             </div>
-        ):(
+        ):
+        (
             <Grid container spacing={16}>
                 <Grid item sm={4}>
                     <img src={userImage} alt="Profile picture" className="profileImage" /> 

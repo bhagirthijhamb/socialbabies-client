@@ -98,6 +98,23 @@ export const deleteBabble = babbleId => dispatch => {
         .catch(err => console.log(err))
 }
 
+export const getUserData = (userHandle) => (dispatch) => {
+    dispatch({ type: LOADING_DATA });
+    axios.get(`/users/user/${userHandle}`)
+        .then(res => {
+            dispatch({
+                type: SET_BABBLES,
+                payload: res.data.babbles
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: SET_BABBLES,
+                payload: null
+            })
+        })
+}
+
 export const clearErrors = () => dispatch => {
         console.log('from clear errors , babble dialog close')
     dispatch({ type: CLEAR_ERRORS })

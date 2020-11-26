@@ -30,15 +30,30 @@ import CommentForm from './CommentForm';
 
 class BabbleDialog extends Component{
     state = {
-        open: false
+        open: false,
+        oldPath: '',
+        newPath: '',
+    }
+    componentDidMount(){
+        if(this.props.openDialog){
+            this.handleOpen();
+        }
     }
     handleOpen = () => {
-        console.log('handleOpen')
-        this.setState({ open: true });
+        let oldPath = window.location.pathname;
+
+        const { userHandle, babbleId } = this.props;
+        const newPath = `/users/${userHandle}/babble/${babbleId}`;
+
+        if(oldPath === newPath) oldPath = `/users/${userHandle}`;
+
+        window.history.pushState(null, null, newPath);
+
+        this.setState({ open: true, oldPath, newPath });
         this.props.getBabble(this.props.babbleId);
     }
     handleClose = () => {
-        console.log('babble dialog close')
+        window.history.pushState(null, null, this.state.oldPath)
         this.setState({ open: false })
         this.props.clearErrors();
     }

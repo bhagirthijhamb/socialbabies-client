@@ -45,7 +45,7 @@ class Babble extends Component {
                     <div className="likes-comments">
                         <LikeButton babbleId={babbleId} /><span>{likeCount} Likes</span>
                         <MyButton tip="comments" ><FontAwesomeIcon icon={faComments} className="commentsIcon"/></MyButton><span>{commentCount} Comments</span>
-                        <BabbleDialog babbleId={babbleId} userHandle={userHandle} />
+                        <BabbleDialog babbleId={babbleId} userHandle={userHandle} openDialog={this.props.openDialog} />
                     </div>
                 </div>
             </div>
@@ -56,6 +56,7 @@ class Babble extends Component {
 Babble.propTypes = {
     user: PropTypes.object.isRequired,
     babble: PropTypes.object.isRequired,
+    openDialog: PropTypes.bool
 }
 
 const mapStateToProps = state => ({

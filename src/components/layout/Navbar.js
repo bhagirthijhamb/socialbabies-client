@@ -10,6 +10,9 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 // import MyButton from '../../util/MyButton';
+import PostBabble from '../babble/PostBabble';
+import Notifications from './Notifications';
+
 
 
 
@@ -21,9 +24,11 @@ class Navbar extends Component {
                 {authenticated ? (
                     <div className="primaryNav">
                     <li><Link to="/"><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faHome} /></span> Home</button></Link></li>
-                    <li><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faBell} /></span> Notifications</button></li>
+                    {/* <li><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faBell} /></span> Notifications</button></li> */}
+                    <li><button className="navBar-button"><Notifications /></button></li>
+                    
                     <li><button className="navBar-button"><span className="navBar-buttonIcon"><FontAwesomeIcon icon={faUserAlt} /></span> Profile</button></li>
-                    <li><button className="babbleButton"> Babble</button></li>
+                    <li><button className="babbleButton"><PostBabble/></button></li>
                 </div>
                 ) : (
                     <Fragment>

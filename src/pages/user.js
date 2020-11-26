@@ -9,13 +9,21 @@ import Grid from '@material-ui/core/Grid';
 import { getUserData } from './../redux/actions/dataActions'
 import Babble from './../components/babble/Babble';
 import StaticProfile from './../components/profile/StaticProfile';
+import BabbleSkeleton from './../utils/BabbleSkeleton';
+import ProfileSkeleton from './../utils/ProfileSkeleton';
+
 
 class user extends Component{
     state = {
-        profile: {}
+        profile: null,
+        babbleIdParam: null
     }
     componentDidMount(){
         const handle = this.props.match.params.handle;
+        const babbleId = this.props.match.params.babbleId;
+
+        if(babbleId) this.setState({ babbleIdParam: babbleId });
+
         this.props.getUserData(handle);
         axios.get(`/users/user/${handle}`)
             .then(res => {
@@ -27,12 +35,20 @@ class user extends Component{
     }
     render(){
         const { babbles, loading } = this.props.data;
+        const { babbleIdParam } = this.state
+
         const babblesMarkup = loading ? (
-            <p>Loading data...</p>
+            <BabbleSkeleton />
         ) : babbles === null ? (
             <p>No babbles from this user</p>
-        ) : (
+        ) : !babbleIdParam ? (
             babbles.map(babble => <Babble key={babble.babbleId} babble={babble} /> )
+        ) : (
+            babbles.map(babble => {
+                if(babble.babbleId !== babbleIdParam)
+                    return <Babble key={babble.babbleId} babble={babble} />
+                else return <Babble key={babble.babbleId} babble={babble} openDialog />
+            })
         )
         return(
             <div className="userPage">
@@ -45,7 +61,7 @@ class user extends Component{
                     </Grid>
                     <Grid item sm={3} xs={12}>
                         {this.state.profile === null ? (
-                            <p>Loding profile...</p>
+                            <ProfileSkeleton />
                         ) : (
                             <StaticProfile profile={this.state.profile} />
                         )}

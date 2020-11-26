@@ -86,7 +86,7 @@ class PostBabble extends Component {
         return(
             <Fragment>
                 <MyButton onClick={this.handleOpen} tip="Post a babble!">
-                    <AddIcon  />
+                    <AddIcon  /> Babble
                 </MyButton>
                 <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth='sm' className="postBabbleDialogBox" >
                     <div className="closePostBabbleBtn">

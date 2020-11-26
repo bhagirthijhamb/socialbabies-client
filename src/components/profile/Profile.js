@@ -14,6 +14,8 @@ import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 import MyButton from '../../utils/MyButton';
 import { uploadImage, logoutUser } from '../../redux/actions/userActions';
 import EditDetails from './EditDetails'
+import ProfileSkeleton from './../../utils/ProfileSkeleton';
+
 
 class Profile extends Component {
 
@@ -90,7 +92,7 @@ class Profile extends Component {
                     <Button component={Link} to="signup">Sign up</Button>
                 </div>
             </div>
-        )) : (<p>loading...</p>)
+        )) : (<ProfileSkeleton />)
 
         return(
             <div className="sidebar">

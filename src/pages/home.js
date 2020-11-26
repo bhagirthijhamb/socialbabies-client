@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import Header from './../components/Header';
-import Babble from './../components/babble/Babble';
 import Profile from './../components/profile/Profile';
 import { connect } from 'react-redux';
+//
+import Header from './../components/Header';
+import Babble from './../components/babble/Babble';
+import BabbleSkeleton from './../utils/BabbleSkeleton';
 import { getBabbles } from './../redux/actions/dataActions';
-
 
 class home extends Component {
     // state = {
@@ -31,7 +32,7 @@ class home extends Component {
         // ) : <p>Loading...</p>
         let recentBabblesMarkup = !loading ? (
             babbles.map(babble => <Babble key={babble.babbleId} babble={babble} />)
-        ) : (<p>Loading...</p>)
+        ) : (<BabbleSkeleton />)
         return (
             <div className="homePage">
                 <Grid container>

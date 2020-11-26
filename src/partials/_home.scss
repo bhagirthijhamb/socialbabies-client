@@ -178,3 +178,58 @@
 .commentData {
   margin-left: 20px;
 }
+
+
+// BabbleSkeleton
+.card {
+  display: flex;
+  margin-bottom: 20px;
+
+}
+.cardContent {
+  width: 100%;
+  flex-direction: column;
+  padding: 25;
+}
+.cover {
+  min-width: 150px;
+  // object-fit: cover;
+}
+.handle {
+  width: 60px;
+  height: 18px;
+  background-color: var(--primaryColor);
+  margin-bottom: 7px;
+}
+.date {
+  height: 14px;
+  width: 100px;
+  background-color: lightgray;
+  margin-bottom: 10px;
+}
+.fullLine {
+  height: 15px;
+  width: 90%;
+  background-color: grey;
+  margin-bottom: 10px;
+}
+.halfLine {
+  height: 15px;
+  width: 50%;
+  background-color: grey;
+  margin-bottom: 10px;
+}
+// Profile Skeleton
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-image {
+  width: 70%;
+  border-radius: 50%;
+  margin-top: 15px;
+}
+// .profile-horizontalLine {
+//   width: 100%;
+// }

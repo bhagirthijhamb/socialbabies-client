@@ -10,7 +10,7 @@ import login from './pages/login';
 import user from './pages/user';
 // Components
 import Authroute from './utils/AuthRoute';
-import TopNavbar from './components/TopNavbar'
+import TopNavbar from './components/layout/TopNavbar'
 // Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -52,6 +52,7 @@ function App() {
                 <Authroute path='/signup' component={signup} />
                 <Authroute path='/login' component={login} />
                 <Route exact path='/users/:handle' component={user} />
+                <Route exact path="/users/:handle/babble/:babbleId" component={user} />
             </Switch>
           </div>
         </Router>
